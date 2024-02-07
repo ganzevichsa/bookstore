@@ -15,5 +15,16 @@ class GenreRepository {
         return $result;
     }
 
+    public function checkMissingGenres($genreIds) {
+        $missingGenres = [];
+        foreach ($genreIds as $genreId) {
+            $genreExists = $this->model->getById($genreId);
+            if (!$genreExists) {
+                $missingGenres[] = $genreId;
+            }
+        }
+        return $missingGenres;
+    }
+
 }
 

@@ -10,5 +10,6 @@ $router->get('/', 'BookController@list');
 /*-------- API ROUTE ----------*/
 $router->post('/api/authors', 'AuthorController@store'); // Создать нового автора
 $router->post('/api/genres', 'GenreController@store'); // Создать новый жанр
+$router->post('/api/books', 'BookController@store'); // Добавить новую книгу
 
 $router->dispatch();

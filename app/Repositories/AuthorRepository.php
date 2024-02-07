@@ -15,5 +15,16 @@ class AuthorRepository {
         return $result;
     }
 
+    public function checkMissingAuthors($authorIds) {
+        $missingAuthors = [];
+        foreach ($authorIds as $authorId) {
+            $authorExists = $this->model->getAuthorById($authorId);
+            if (!$authorExists) {
+                $missingAuthors[] = $authorId;
+            }
+        }
+        return $missingAuthors;
+    }
+
 }
 
