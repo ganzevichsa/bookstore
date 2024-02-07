@@ -21,7 +21,7 @@ class Genre extends BaseModel {
         }
     }
 
-    private function getById($genreId) {
+    public function getById($genreId) {
         $query = "SELECT * FROM genres WHERE id = ?";
         $genre = $this->db->queryOne($query, [$genreId]);
         

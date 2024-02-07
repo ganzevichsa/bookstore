@@ -21,7 +21,7 @@ class Author extends BaseModel {
         }
     }
 
-    private function getAuthorById($authorId) {
+    public function getAuthorById($authorId) {
         $query = "SELECT * FROM authors WHERE id = ?";
         $author = $this->db->queryOne($query, [$authorId]);
         
