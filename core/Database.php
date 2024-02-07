@@ -35,7 +35,7 @@ class Database {
             // Подготовка и выполнение запроса
             $statement = $this->db->prepare($sql);
             $statement->execute($params);
-
+            
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         } catch(PDOException $e) {
             $this->logError($e->getMessage());
