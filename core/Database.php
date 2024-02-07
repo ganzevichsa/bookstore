@@ -1,16 +1,14 @@
 <?php
 
 /**
- * Класс Database
- * Обрабатывает подключение к базе данных и логирование ошибок.
+ * Класс обрабатывает подключение к базе данных и логирование ошибок.
  */
 class Database {
     protected $db;
     protected $errorDatabase = 'error.log'; // файл журнала ошибок
 
     /**
-     * Конструктор класса Database.
-     * Установка подключения к базе данных.
+     * Конструктор класса. Установка подключения к базе данных.
      */
     public function __construct() {
 
@@ -26,6 +24,22 @@ class Database {
         } catch(PDOException $e) {
             $this->logError($e->getMessage());
             exit;
+        }
+    }
+
+    /**
+     * Метод выполнения запроса.
+     */
+    public function query($sql, $params = []) {
+        try {
+            // Подготовка и выполнение запроса
+            $statement = $this->db->prepare($sql);
+            $statement->execute($params);
+
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            $this->logError($e->getMessage());
+            return false;
         }
     }
 
