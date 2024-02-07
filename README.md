@@ -1,21 +1,40 @@
 # bookstore
 
-Документация
-    1. выполнить sql запрос с файла create_database для создания базы данных и таблиц.
+## Документация
 
-Api
-    1. api/authors
-        - method: POST
-        params
-            - name(string)
-    2. /api/genres
-        - method: POST
-        params
-            - name(string)
-    3. /api/books
-        - method: POST
-        params
-            - title(string, max:30)
-            - published_year(integer, max:4)
-            - authors(array)
-            - genres(array)
+### 1. Выполнить SQL-запрос
+
+Для создания базы данных и таблиц выполните SQL-запрос из файла `create_database.sql`.
+
+## API
+
+### 1. /api/authors
+
+- **Метод:** POST
+
+#### Параметры запроса:
+
+- `name` (строка) - имя автора
+
+### 2. /api/genres
+
+- **Метод:** POST
+
+#### Параметры запроса:
+
+- `name` (строка) - название жанра
+
+### 3. /api/books
+
+- **Метод:** POST
+
+#### Параметры запроса:
+
+- `title` (строка, максимум 30 символов) - название книги
+- `published_year` (целое число, максимум 4 цифры) - год публикации
+- `authors` (массив) - список авторов книги
+- `genres` (массив) - список жанров книги
+
+## README.md
+
+Для получения подробной информации и инструкций по использованию API обратитесь к файлу `README.md`.
