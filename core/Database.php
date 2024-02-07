@@ -43,6 +43,36 @@ class Database {
         }
     }
 
+    public function queryOne($sql, $params = []) {
+        try {
+            $statement = $this->db->prepare($sql);
+            $statement->execute($params);
+           
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            $this->logError($e->getMessage());
+
+            return false;
+        }
+    }
+
+    public function insert($sql, $params = []) {
+        try {
+            $statement = $this->db->prepare($sql);
+            $result = $statement->execute($params);
+
+            return $result;
+        } catch(PDOException $e) {
+            $this->logError($e->getMessage());
+
+            return false;
+        }
+    }
+
+    public function lastInsertId(){
+        return $this->db->lastInsertId();
+    }
+
     protected function logError($message) {
         error_log($message . "\n", 3, $this->errorLogDatabase);
     }
