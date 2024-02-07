@@ -19,6 +19,6 @@ abstract class BaseController implements ControllerInterface {
      * Метод для отображения представления.
      */
     public function view($view, $data = []) {
-        require_once __DIR__ . "/../resource/views/{$view}.php";
+        require_once __DIR__ . "/../../resource/views/{$view}.php";
     }
 }
