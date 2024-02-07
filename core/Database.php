@@ -5,7 +5,7 @@
  */
 class Database {
     protected $db;
-    protected $errorDatabase = 'error.log'; // файл журнала ошибок
+    protected $errorLogDatabase = 'error.log'; // файл журнала ошибок
 
     /**
      * Конструктор класса. Установка подключения к базе данных.
@@ -44,6 +44,6 @@ class Database {
     }
 
     protected function logError($message) {
-        error_log($message . "\n", 3, $this->errorLogFile);
+        error_log($message . "\n", 3, $this->errorLogDatabase);
     }
 }

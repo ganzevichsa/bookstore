@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../Repositories/BookRepository.php';
-require_once __DIR__ . 'BaseController.php';
+require_once 'BaseController.php';
 
 class BookController extends BaseController {
 
@@ -11,8 +11,8 @@ class BookController extends BaseController {
 
     public function list() {
         $filter = [
-            'genre' => $_GET['genre'] ?? null;
-            'year' => $_GET['year'] ?? null;
+            'genre' => $_GET['genre'] ?? null,
+            'year' => $_GET['year'] ?? null
         ];
 
         $book = $this->repository->list($filter);

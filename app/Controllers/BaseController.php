@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../Interface/ControllerInterface.php';
 
 /**
  * Абстрактный класс, основные функции для контроллеров.

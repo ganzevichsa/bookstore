@@ -31,7 +31,7 @@ class Router {
         $method = $_SERVER['REQUEST_METHOD'];
 
         // Проверяем есть ли такой маршрут
-        if(array_ket_exists($uri, $this->routes[$metod])) {
+        if(array_key_exists($uri, $this->routes[$method])) {
             $controllerAction = $this->routes[$method][$uri];
             $this->callControllerAction($uri, $controllerAction);
         } else {
@@ -49,8 +49,8 @@ class Router {
 
         //определяем путь к контроллеру в зависимости от uri
         $path = (strpos($uri, 'api') !== false) ? 
-            __DIR__ . "/../Controllers/Api/{$controller}.php" :
-            __DIR__ . "/../Controllers/{$controller}.php";
+            __DIR__ . "/../app/Controllers/Api/{$controller}.php" :
+            __DIR__ . "/../app/Controllers/{$controller}.php";
 
         // подключаем контроллер
         require_once $path;
