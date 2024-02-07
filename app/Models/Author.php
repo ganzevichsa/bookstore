@@ -11,7 +11,7 @@ class Author extends BaseModel {
         if ($result) {
             $authorId = $this->db->lastInsertId();
             $author = $this->getAuthorById($authorId);
-            if ($result) {
+            if ($author) {
                 return $author;
             }else{
                 return false;
