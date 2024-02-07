@@ -12,7 +12,7 @@ class BookRepository {
     }
 
     public function list($filter = []) {
-        $books = $this->model->list();
+        $books = $this->model->list($filter);
 
         return $books;
     }

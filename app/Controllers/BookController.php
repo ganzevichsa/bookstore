@@ -10,13 +10,15 @@ class BookController extends BaseController {
     }
 
     public function list() {
+        
         $filter = [
-            'genre' => $_GET['genre'] ?? null,
+            'author' => $_GET['author'] ?? null,
             'year' => $_GET['year'] ?? null
         ];
 
-        $book = $this->repository->list($filter);
-        $this->view('book-list', ['book' => $book]);
+        $books = $this->repository->list($filter);
+
+        $this->view('book-list', ['books' => $books]);
     }
 
 }

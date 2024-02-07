@@ -10,18 +10,22 @@
     <table border="1">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Название</th>
                 <th>Автор</th>
-                <th>Жанр</th>
+                <th>Год</th>
+
             </tr>
         </thead>
         <tbody>
-            <?php if (!empty($data['book']) && is_array($data['book'])) : ?>
-                <?php foreach ($data['book'] as $book): ?>
+            <?php if (!empty($data['books']) && is_array($data['books'])) : ?>
+                <?php foreach ($data['books'] as $book): ?>
                     <tr>
-                        <td><?php echo $book['title']; ?></td>
-                        <td><?php echo $book['author']; ?></td>
-                        <td><?php echo $book['genre']; ?></td>
+                        <td><?php echo $book['book_id']; ?></td>
+                        <td><?php echo $book['book_title']; ?></td>
+                        <td><?php echo $book['authors_list']; ?></td>
+                        <td><?php echo $book['book_year']; ?></td>
+
                     </tr>
                 <?php endforeach; ?>
             <?php else : ?>

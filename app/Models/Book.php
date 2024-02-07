@@ -4,23 +4,23 @@ require_once 'BaseModel.php';
 class Book extends BaseModel {
 
     public function list($filter = []) {
-        $query = "SELECT books.*, genres.name as genre_name 
-                FROM books 
-                -- LEFT JOIN genres ON books.genre_id = genres.id 
-                WHERE 1";
-    
-        if (!empty($filter['genre'])) {
-            $query .= " AND genres.name = ?";
-            $params[] = $filter['genre'];
+        $query = "SELECT books.id AS book_id, books.title AS book_title, books.published_year AS book_year, GROUP_CONCAT(authors.name SEPARATOR ', ') AS authors_list
+            FROM books
+            JOIN book_author ON books.id = book_author.book_id
+            JOIN authors ON book_author.author_id = authors.id";
+
+        if (!empty($filter['author'])) {
+            $query .= " AND authors.name = ?";
+            $params[] = $filter['author'];
         }
     
         if (!empty($filter['year'])) {
-            $query .= " AND books.year = ?";
+            $query .= " AND books.published_year = ?";
             $params[] = $filter['year'];
         }
     
-        $query .= " GROUP BY books.id";
-    
+        $query .= " GROUP BY books.id LIMIT 20";
+
         return $this->db->query($query, $params ?? []);
     }
 
